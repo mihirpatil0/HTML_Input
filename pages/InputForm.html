@@ -27,7 +27,7 @@
         <div>
             <label for="email">Email input type: </label>
             <input type="email" name="email" id="email">
-            <error-output class="text-error" for="email"></error-output>
+            <error-output class="email-error" for="email"></error-output>
         </div>
        
         <div>
@@ -73,20 +73,35 @@
         const textError = document.querySelector('.text-error')
         text.addEventListener('input',function () {
             let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$")
-            if (nameRegex.test(name.value)) {
+            if (nameRegex.test(name.value))
+            {
                 textError.textContent = ""
             }
-            else{
+            else
+            {
                 textError.textContent = "Name is Incorrect"
             } 
-        })
+        });
+
+        // validate email-id
+        const email = document.querySelector('#email')
+        const emailError = document.querySelector('.email-error')
+        email.addEventListener('input' , function(){
+            let emailRegex = RegExp("^[0-9a-zA-Z]+([.,+,_,-]{1}[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]{1}[a-zA-Z]{2,3}([.]{1}[a-zA-Z]{2})?")
+        if (emailRegex.test(email.value)) {
+            emailError.textContent = ""
+        }
+        else{
+            emailError.textContent = "Name is Incorrect"
+        }
+        });
 
         const salary = document.querySelector('#salary')
         const output = document.querySelector('.salary-output')
         output.textContent = salary.value;
         salary.addEventListener('input', function () {
             output.textContent = salary.value
-        })
+        });
     </script>
 </body>
 </html>
